@@ -11,4 +11,10 @@
           class="spring.education.RockMusic">
     </bean>
 
+    <bean
+        id="MusicPlayer"
+        class="spring.education.MusicPlayer">
+        <constructor-arg ref="MusicBean"/>
+    </bean>
+
 </beans>
