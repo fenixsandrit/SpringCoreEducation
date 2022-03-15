@@ -1,20 +1,25 @@
 package spring.education;
 
 import org.springframework.aop.target.LazyInitTargetSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class MusicPlayer {
 
-    private Music music;
-
-    public MusicPlayer(Music music) {
-        this.music = music;
+    private RapMusic rapMusic;
+    private RockMusic rockMusic;
+    @Autowired
+    public MusicPlayer(RockMusic rockMusic, RapMusic rapMusic) {
+        this.rapMusic = rapMusic;
+        this.rockMusic = rockMusic;
     }
 
-    public void playMusic(){
-        System.out.println("Playing: " + music.getSong());
+
+    public String playMusic(){
+        return ("Playing: " + rapMusic.getSong() + "\n     also playing: " + rockMusic.getSong());
     }
 
 }
