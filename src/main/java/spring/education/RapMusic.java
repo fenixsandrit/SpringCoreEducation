@@ -1,13 +1,9 @@
 package spring.education;
 
-public class RapMusic implements Music{
-    private void doMyInit(){
-        System.out.println("Rap music init method");
-    }
+import org.springframework.stereotype.Component;
 
-    private void doMyDestroy(){
-        System.out.println("Rap music destroy method");
-    }
+@Component
+public class RapMusic implements Music{
     @Override
     public String getSong() {
         return "Fuck the police comin' straight from the underground";
