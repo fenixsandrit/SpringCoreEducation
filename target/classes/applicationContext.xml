@@ -18,28 +18,25 @@
     <bean id="musicBean2"
           class="spring.education.RockMusic">
     </bean>
-    <bean id="musicBean3"
-          class="spring.education.RapMusic">
-    </bean>
+
 
     <bean
-        id="musicPlayer"
+        id="musicPlayer1"
         class="spring.education.MusicPlayer">
         <property name="music" ref="musicBean1"/>
         <property name="volume" value="23"/>
         <property name="name" value="${musicPlayer.name}"/>
-        <property name="musics" ref="musics"/>
+    </bean>
 
+    <bean
+            id="musicPlayer2"
+            class="spring.education.MusicPlayer"
+            scope="prototype">
+        <property name="music" ref="musicBean2"/>
+        <property name="volume" value="10"/>
+        <property name="name" value="${musicPlayer.name}"/>
     </bean>
-    <bean id="musics" class="java.util.ArrayList">
-        <constructor-arg>
-            <list>
-                <ref bean="musicBean1" />
-                <ref bean="musicBean2" />
-                <ref bean="musicBean3" />
-            </list>
-        </constructor-arg>
-    </bean>
+
 
 
 
