@@ -5,16 +5,42 @@
         xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-    <bean id="musicBean"
+
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <bean id="musicBean1"
+          class="spring.education.ClassicalMusic">
+    </bean>
+    <bean id="musicBean2"
           class="spring.education.RockMusic">
+    </bean>
+    <bean id="musicBean3"
+          class="spring.education.RapMusic">
     </bean>
 
     <bean
         id="musicPlayer"
         class="spring.education.MusicPlayer">
-        <constructor-arg ref="MusicBean"/>
+        <property name="music" ref="musicBean1"/>
+        <property name="volume" value="23"/>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="musics" ref="musics"/>
+
     </bean>
+    <bean id="musics" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="musicBean1" />
+                <ref bean="musicBean2" />
+                <ref bean="musicBean3" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+
 
 </beans>
